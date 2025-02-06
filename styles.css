@@ -86,22 +86,24 @@ header {
     align-items: center;
     position: relative;
     width: 100%;
+    height: 100%; /* Asegura que tenga la misma altura que el contenedor */
 }
 
 #Nosotros h2 {
     flex: 1;
     text-align: left;
-    margin: 50px; /* Aplica un margen de 20px en todos los lados */
-
+    margin: 20px;
 }
 
 #Nosotros p {
     flex: 2;
-    text-align: right;
-    margin: 60px; /* Aplica un margen de XXpx en todos los lados */
-
+    text-align: left;
+    padding-left: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
 }
 
+/* Linea vertical */
 .line {
     position: absolute;
     top: 0;
@@ -116,12 +118,12 @@ header {
     0% { height: 0%; }
     100% { height: 100%; }
 }
+
 /* servicios Section */
 #servicios {
     padding: 50px 20px;
     text-align: center;
     background-color: white;
-
 }
 
 /* Carousel Section */
@@ -152,7 +154,6 @@ header {
     100% { transform: translateX(-100%); }
 }
 
-
 /* proyectos Section */
 #proyectos {
     padding: 50px 20px;
@@ -162,7 +163,7 @@ header {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 20px;
-    padding: 20px;
+    padding: 10px;
     width: 100%;
 }
 
@@ -177,12 +178,6 @@ header {
     border-radius: 10px;
     min-height: 300px;
 }
-
-
-.top-left { grid-column: 1; grid-row: 1; }
-.top-right { grid-column: 2; grid-row: 1; }
-.bottom-left { grid-column: 1; grid-row: 2; }
-.bottom-right { grid-column: 2; grid-row: 2; }
 
 .proyectos-item a {
     display: inline-block;
@@ -201,9 +196,7 @@ header {
     transform: scale(1.1);
 }
 
-
 /* step Section */
-
 .step {
     background: white;
     border-radius: 8px;
@@ -222,7 +215,6 @@ header {
 #adicional {
     padding: 50px 20px;
     background-color: white;
-
 }
 
 /* Footer */
@@ -272,6 +264,13 @@ header {
 
 /* Responsive */
 @media screen and (max-width: 768px) {
+    /* Sección Nosotros */
+    #Nosotros .content {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    /* Footer */
     .footer-content {
         flex-direction: column;
         align-items: center;
@@ -282,6 +281,7 @@ header {
         margin-bottom: 20px;
     }
 
+    /* Menú */
     .menu ul {
         flex-direction: column;
         align-items: center;
@@ -290,5 +290,10 @@ header {
     .menu a {
         margin-left: 0;
         margin-top: 10px;
+    }
+
+    /* Ajuste en el grid de proyectos */
+    .grid-container {
+        grid-template-columns: 1fr;
     }
 }
