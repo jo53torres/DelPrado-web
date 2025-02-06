@@ -2,16 +2,19 @@
 document.addEventListener("DOMContentLoaded", function() {
     // Agregar efectos de desplazamiento suave para los enlaces internos
     const links = document.querySelectorAll('a[href^="#"]');
-    for (const link of links) {
+    links.forEach(link => {
         link.addEventListener('click', smoothScroll);
-    }
+    });
 
     function smoothScroll(e) {
         e.preventDefault();
         const targetId = this.getAttribute('href');
-        document.querySelector(targetId).scrollIntoView({
-            behavior: 'smooth'
-        });
+        const targetElement = document.querySelector(targetId);
+        if (targetElement) {
+            targetElement.scrollIntoView({
+                behavior: 'smooth'
+            });
+        }
     }
 
     // Agregar animaciones a los elementos al hacer scroll
@@ -19,13 +22,13 @@ document.addEventListener("DOMContentLoaded", function() {
     window.addEventListener('scroll', checkAnimation);
 
     function checkAnimation() {
-        for (const element of animatedElements) {
+        animatedElements.forEach(element => {
             if (isElementInViewport(element)) {
                 element.classList.add('animated');
             } else {
                 element.classList.remove('animated');
             }
-        }
+        });
     }
 
     function isElementInViewport(el) {
@@ -47,4 +50,22 @@ document.addEventListener("DOMContentLoaded", function() {
             content.style.display = content.style.display === 'block' ? 'none' : 'block';
         });
     });
+
+    // Carousel: Agregar contenido duplicado para el scroll infinito
+    const content = document.querySelector(".carousel-content");
+    const items = Array.from(content.children);
+    items.forEach(item => {
+        const clone = item.cloneNode(true);
+        content.appendChild(clone);
+    });
+
+    function infiniteScroll() {
+        if (content.scrollLeft >= content.scrollWidth / 2) {
+            content.scrollLeft = 0;
+        } else {
+            content.scrollLeft += 1;
+        }
+        requestAnimationFrame(infiniteScroll);
+    }
+    infiniteScroll();
 });
