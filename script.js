@@ -1,6 +1,6 @@
 // Script para animaciones y efectos avanzados
 document.addEventListener("DOMContentLoaded", function() {
-    // Agregar efectos de desplazamiento suave para los enlaces internos
+    // Efecto de desplazamiento suave para enlaces internos
     const links = document.querySelectorAll('a[href^="#"]');
     links.forEach(link => {
         link.addEventListener('click', smoothScroll);
@@ -12,12 +12,13 @@ document.addEventListener("DOMContentLoaded", function() {
         const targetElement = document.querySelector(targetId);
         if (targetElement) {
             targetElement.scrollIntoView({
-                behavior: 'smooth'
+                behavior: 'smooth',
+                block: 'start'
             });
         }
     }
 
-    // Agregar animaciones a los elementos al hacer scroll
+    // Agregar animaciones a los elementos cuando entren en el viewport
     const animatedElements = document.querySelectorAll('.animate');
     window.addEventListener('scroll', checkAnimation);
 
@@ -34,24 +35,22 @@ document.addEventListener("DOMContentLoaded", function() {
     function isElementInViewport(el) {
         const rect = el.getBoundingClientRect();
         return (
-            rect.top >= 0 &&
-            rect.left >= 0 &&
-            rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
-            rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+            rect.top <= (window.innerHeight || document.documentElement.clientHeight) &&
+            rect.bottom >= 0
         );
     }
 
-    // Manejo de clic en los títulos de pasos para desplegar/ocultar contenido
+    // Desplegar contenido en los pasos
     const stepTitles = document.querySelectorAll('.step-title');
-
     stepTitles.forEach(title => {
         title.addEventListener('click', function() {
             const content = this.nextElementSibling;
-            content.style.display = content.style.display === 'block' ? 'none' : 'block';
+            content.style.maxHeight = content.style.maxHeight ? null : content.scrollHeight + "px";
+            content.style.transition = "max-height 0.3s ease-in-out";
         });
     });
 
-    // Carousel: Agregar contenido duplicado para el scroll infinito
+    // Carrusel: Desplazamiento suave y dinámico
     const content = document.querySelector(".carousel-content");
     const items = Array.from(content.children);
     items.forEach(item => {
@@ -59,12 +58,13 @@ document.addEventListener("DOMContentLoaded", function() {
         content.appendChild(clone);
     });
 
+    let scrollValue = 0;
     function infiniteScroll() {
-        if (content.scrollLeft >= content.scrollWidth / 2) {
-            content.scrollLeft = 0;
-        } else {
-            content.scrollLeft += 1;
+        scrollValue += 1;
+        if (scrollValue >= content.scrollWidth / 2) {
+            scrollValue = 0;
         }
+        content.scrollLeft = scrollValue;
         requestAnimationFrame(infiniteScroll);
     }
     infiniteScroll();

@@ -1,37 +1,45 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es"> <!-- Cambiado a "es" para reflejar el idioma del contenido -->
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Del Prado Arquitectura">
+    <meta name="description" content="Del Prado Arquitectura - Transformamos tus ideas en realidad con creatividad, tecnología y sostenibilidad.">
     <title>Del Prado Arquitectura</title>
     <link rel="stylesheet" href="styles.css">
-    <link rel="shortcut icon" href="Media/Logo/Logo_blanco_vector.png">
+    <link rel="shortcut icon" href="Media/Logo/Logo_blanco_vector.png" type="image/png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,700;1,400&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/eb9ee31969.js" crossorigin="anonymous"></script> <!-- Movido aquí para cargar antes -->
 </head>
 
 <body>
     <header>
         <div class="logo-container">
-            <a href="index.html"><img src="Media/Logo/Logo_blanco_vector.png" alt="Del Prado logo white" class="logo"/></a>
+            <a href="index.html">
+                <img src="Media/Logo/Logo_negro_vector.png" alt="Logo de Del Prado Arquitectura" class="logo">
+            </a>
         </div>
         <nav class="menu">
             <a href="index.html">Inicio</a>
-            <a href="#">Nosotros</a>
-            <a href="#">Servicios</a>
-            <a href="#">Proyectos</a>
-            <a href="#">Contacto</a>
+            <a href="#Nosotros">Nosotros</a> <!-- Enlaces internos con # -->
+            <a href="#servicios">Servicios</a>
+            <a href="#proyectos">Proyectos</a>
+            <a href="#contacto">Contacto</a> <!-- Asegúrate de añadir un id="contacto" en la sección correspondiente -->
         </nav>
     </header>
 
     <main>
+        <!-- Sección Hero -->
         <section class="hero">
             <div class="hero-text">
                 <h1>Del Prado Arquitectura</h1>
                 <p>Buscamos convertir tus ideas en realidad</p>
             </div>
-            <img class="hero-video" src="Media/Imagenes/portada_imagen.jpg" autoplay loop muted>
+            <img class="hero-video" src="Media/Imagenes/portada_imagen.jpg" alt="Portada de Del Prado Arquitectura" loading="lazy"> <!-- Mejorado el alt y añadido loading="lazy" -->
         </section>
 
+        <!-- Sección Nosotros -->
         <section id="Nosotros">
             <div class="content">
                 <h2 class="step-title">Nosotros</h2>
@@ -40,94 +48,125 @@
             </div>
         </section>
 
-         
+        <!-- Sección Servicios -->
         <section id="servicios">
-            <div class="linea"></div>
-            <h1 class="step-title">Servicios</h1>
+            <h2 class="step-title">Servicios</h2>
             <div class="carousel-container">
                 <div class="carousel-content">
                     <div class="step">
                         <div class="step-content">
-                            <i class="fa-solid fa-list-check"></i><br><h2>Redacción de proyectos</h2>
+                            <i class="fa-solid fa-list-check"></i><br>
+                            <h3>Redacción de proyectos</h3>
                         </div>
                     </div>
                     <div class="step">
                         <div class="step-content">
-                            <i class="fa-solid fa-pencil"></i><br><h2>Tasaciones</h2>
+                            <i class="fa-solid fa-pencil"></i><br>
+                            <h3>Tasaciones</h3>
                         </div>
                     </div>
                     <div class="step">
                         <div class="step-content">
-                            <i class="fa-regular fa-building"></i><br><h2>Planimetrias</h2>
+                            <i class="fa-regular fa-building"></i><br>
+                            <h3>Planimetrías</h3>
                         </div>
                     </div>
                     <div class="step">
                         <div class="step-content">
-                            <i class="fa-solid fa-computer"></i><br><h2>Renders</h2>
+                            <i class="fa-solid fa-computer"></i><br>
+                            <h3>Renders</h3>
                         </div>
                     </div>
                     <div class="step">
                         <div class="step-content">
-                            <i class="fa-solid fa-helmet-safety"></i><br><h2>Dirección de Obras</h2>
+                            <i class="fa-solid fa-helmet-safety"></i><br>
+                            <h3>Dirección de Obras</h3>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-content">
+                            <i class="fa-solid fa-list-check"></i><br>
+                            <h3>Redacción de proyectos</h3>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-content">
+                            <i class="fa-solid fa-pencil"></i><br>
+                            <h3>Tasaciones</h3>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-content">
+                            <i class="fa-regular fa-building"></i><br>
+                            <h3>Planimetrías</h3>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-content">
+                            <i class="fa-solid fa-computer"></i><br>
+                            <h3>Renders</h3>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-content">
+                            <i class="fa-solid fa-helmet-safety"></i><br>
+                            <h3>Dirección de Obras</h3>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-
+        <!-- Sección Proyectos -->
         <section id="proyectos">
-            <h1 class="step-title">Proyectos</h1>
+            <h2 class="step-title">Proyectos</h2>
             <div class="grid-container">
-                <div class="proyectos-item top-left" style="background-image: url('Media/Imagenes/destacado_1.jpg');">
-                    <h2><a>Vivienda unifamiliar Boadilla del monte</a></h3>
+                <div class="proyectos-item" style="background-image: url('Media/Imagenes/destacado_1.jpg');">
+                    <h3><a href="#">Vivienda unifamiliar Boadilla del monte</a></h3>
                 </div>
-                <div class="proyectos-item top-right" style="background-image: url('Media/Imagenes/destacado_2.jpg');">
-                    <h2><a>Cambio de uso Madrid centro</a></h3>
+                <div class="proyectos-item" style="background-image: url('Media/Imagenes/destacado_2.jpg');">
+                    <h3><a href="#">Cambio de uso Madrid centro</a></h3>
                 </div>
-                <div class="proyectos-item bottom-left" style="background-image: url('Media/Imagenes/destacado_3.jpg');">
-                    <h2><a>Diseño de mobiliario Enteka madera</a></h2>
+                <div class="proyectos-item" style="background-image: url('Media/Imagenes/destacado_3.jpg');">
+                    <h3><a href="#">Diseño de mobiliario Enteka madera</a></h3>
                 </div>
-                <div class="proyectos-item bottom-right" style="background-image: url('Media/Imagenes/destacado_4.jpg');">
-                    <h2><a href="#">Más proyectos</a></h2>
-                </div> 
+                <div class="proyectos-item" style="background-image: url('Media/Imagenes/destacado_4.jpg');">
+                    <h3><a href="#">Más proyectos</a></h3>
+                </div>
             </div>
         </section>
 
+        <!-- Sección Adicional -->
         <section id="adicional">
             <p>La arquitectura es la expresión de nuestra visión sobre el espacio y el entorno. Cada proyecto que creamos es una combinación de funcionalidad, estética y sostenibilidad, buscando mejorar la calidad de vida de las personas y el impacto de nuestro trabajo en el mundo. Nos dedicamos a diseñar experiencias únicas, desde la planificación hasta la ejecución, siempre respetando los valores de innovación y responsabilidad ambiental.</p>
-         </section>
-       
-
+        </section>
     </main>
 
-    <script src="https://kit.fontawesome.com/eb9ee31969.js" crossorigin="anonymous"></script>
-
+    <!-- Footer -->
     <footer>
         <div class="footer-content">
             <div class="footer-section contact">
-                <h2>Contactanos</h2>
+                <h2>Contáctanos</h2>
                 <ul>
                     <li><i class="fa-solid fa-envelope"></i> delprado@delpradoarq.net</li>
                     <li><i class="fa-solid fa-location-dot"></i> Madrid - España</li>
-                    <li><a href="#"></a><i class="fa-brands fa-whatsapp"></i> +34 630 829 813</a></li>
+                    <li><a href="tel:+34630829813"><i class="fa-brands fa-whatsapp"></i> +34 630 829 813</a></li>
                     <li><a href="https://www.instagram.com/delpradoarquitectura?igsh=YjB2dzV2anQ5M3Bx&utm_source=qr"><i class="fa-brands fa-instagram"></i> Instagram</a></li>
                     <li><a href="https://www.tiktok.com/@delpradoarquitectura?_t=ZN-8tfjz7L7ZN0&_r=1"><i class="fa-brands fa-tiktok"></i> Tik-Tok</a></li>
                 </ul>
             </div>
- 
-            <div class="footer-section legal">
-                <h2>Términos y condiciones de uso </h2>
-                <ul>
-                    <li><a href="#"> Aviso Legal</a></li>
-                    <li><a href="#"> Política de privacidad</a></li>
-                    <li><a href="#"> Política de cookies</a></li>
 
+            <div class="footer-section legal">
+                <h2>Términos y condiciones de uso</h2>
+                <ul>
+                    <li><a href="#">Aviso Legal</a></li>
+                    <li><a href="#">Política de privacidad</a></li>
+                    <li><a href="#">Política de cookies</a></li>
                 </ul>
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2024 Del Prado Arquitectura. All rights reserved.</p>
+            <p>&copy; 2024 Del Prado Arquitectura. Todos los derechos reservados.</p>
         </div>
     </footer>
 </body>

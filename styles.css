@@ -2,7 +2,7 @@
 body {
     margin: 0;
     padding: 0;
-    font-family: Arial, sans-serif;
+    font-family: 'Poppins', sans-serif;
     line-height: 1.6;
     color: #333;
     background-color: #f4f4f4;
@@ -14,27 +14,33 @@ header {
     top: 0;
     left: 0;
     width: 100%;
-    background-color: rgba(0, 0, 0, 0.5); /* Fondo semi-transparente */
-    z-index: 1000; /* Coloca el header por encima de otros elementos */
-    display: flex; /* Utiliza flexbox para alinear los elementos */
-    align-items: center; /* Centra verticalmente los elementos */
-    padding: 10px 20px; /* Añadir espaciado interno */
+    background-color: rgba(255, 255, 255, 0.8);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+    transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+header.scrolled {
+    background-color: rgba(255, 255, 255, 0.95);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
 .logo-container {
-    padding: 10px 20px; /* Añade espaciado interno al contenedor del logotipo */
+    padding: 10px 20px;
     white-space: nowrap;
 }
 
 .logo {
-    height: 50px; /* Ajusta la altura del logotipo según tus necesidades */
+    height: 50px;
     display: block;
 }
 
 .menu {
-    margin-left: auto; /* Empuja el menú hacia la derecha */
-    padding: 10px 20px; /* Añade espaciado interno al menú */
-    font-size: 1.2rem; /* Tamaño de letra aumentado */
+    margin-left: auto;
+    padding: 10px 20px;
+    font-size: 1.2rem;
 }
 
 .menu ul {
@@ -46,20 +52,20 @@ header {
 }
 
 .menu a {
-    color: white; /* Color de texto blanco */
-    text-decoration: none; /* Elimina el subrayado de los enlaces */
-    margin-left: 20px; /* Espacio entre los elementos del menú */
+    color: rgb(0, 0, 0);
+    text-decoration: none;
+    margin-left: 20px;
     margin-right: 20px;
-    padding: auto;
-    transition: background-color 0.3s, transform 0.3s;
+    padding: 10px 15px; /* Añadido padding para mejor interacción */
+    transition: background-color 0.3s ease, transform 0.3s ease;
     font-size: 1.2rem;
     text-align: center;
     border-radius: 3px;
-
 }
+
 .menu a:hover {
-    background-color: rgba(136, 206, 225, 0.9);
-    transform: scale(1.5);
+    background-color: rgba(217, 194, 163, 0.75);
+    transform: scale(1.1);
 }
 
 /* Hero Section */
@@ -68,6 +74,7 @@ header {
     height: 60vh;
     background: #000;
     color: #fff;
+    margin-top: 90px;
 }
 
 .hero-text {
@@ -77,33 +84,40 @@ header {
     transform: translate(-50%, -50%);
     text-align: center;
 }
+
 .hero-text h1 {
-    font-size: 3rem; /* Tamaño de letra aumentado */
+    font-size: 3.5rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
+
 .hero-text p {
-    font-size: 1rem; /* Tamaño de letra aumentado */
+    font-size: 1.2rem;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
 }
 
 .hero-video {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    opacity: 0.5;
+    opacity: 0.6;
 }
 
-/* nosotros Section */
+/* Nosotros Section */
 #Nosotros .content {
     display: flex;
     align-items: center;
     position: relative;
     width: 100%;
-    height: 100%; /* Asegura que tenga la misma altura que el contenedor */
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.5);
+    padding: 20px; /* Añadido padding para mejor espaciado */
 }
 
 #Nosotros h2 {
     flex: 1;
     text-align: left;
     margin: 20px;
+    font-size: 2rem; /* Tamaño de fuente aumentado */
 }
 
 #Nosotros p {
@@ -112,16 +126,16 @@ header {
     padding-left: 20px;
     margin-left: 20px;
     margin-right: 20px;
+    font-size: 1.1rem; /* Tamaño de fuente aumentado */
 }
 
-/* Linea vertical */
 .line {
     position: absolute;
     top: 0;
     left: 20%;
     height: 100%;
-    width: 4px;
-    background-color: #333;
+    width: 2px;
+    background-color: rgba(217, 194, 163, 0.75);
     animation: lineMove 5s linear infinite;
 }
 
@@ -130,51 +144,55 @@ header {
     100% { height: 100%; }
 }
 
-/* servicios Section */
+/* Servicios Section */
 #servicios {
     padding: 50px 20px;
     text-align: center;
-    background-color: white;
+    background: linear-gradient(135deg, rgba(217, 194, 163, 0.75), rgba(217, 194, 163, 0.9));
 }
 
-/* Carousel Section */
 .carousel-container {
     overflow: hidden;
     width: 100%;
-    display: flex;
     position: relative;
 }
 
 .carousel-content {
     display: flex;
     gap: 20px;
-    animation: scroll 10s linear infinite;
+    animation: scroll 20s linear infinite; /* Aumentado el tiempo para mejor fluidez */
 }
 
-.step {
+.carousel-content .step {
     flex: 0 0 auto;
     padding: 20px;
     text-align: center;
     background: #f0f0f0;
     border-radius: 10px;
     min-width: 200px;
+    transition: transform 0.3s ease;
+}
+
+.carousel-content .step:hover {
+    transform: scale(1.05); /* Efecto hover en los pasos */
 }
 
 @keyframes scroll {
     0% { transform: translateX(0); }
-    100% { transform: translateX(-100%); }
+    100% { transform: translateX(-50%); } /* Cambiado para efecto de loop */
 }
 
-/* proyectos Section */
+/* Proyectos Section */
 #proyectos {
     padding: 40px 20px;
+    background-color: rgba(255, 255, 255, 0.5);
 }
-#proyectos h1{
+
+#proyectos h1 {
     padding: 50px 20px;
     text-align: center;
-
+    font-size: 2.5rem; /* Tamaño de fuente aumentado */
 }
-
 
 .grid-container {
     display: grid;
@@ -194,6 +212,12 @@ header {
     justify-content: flex-end;
     border-radius: 10px;
     min-height: 300px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.proyectos-item:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
 }
 
 .proyectos-item a {
@@ -213,27 +237,6 @@ header {
     transform: scale(1.1);
 }
 
-/* step Section */
-.step {
-    background: white;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    text-align: center;
-    margin-bottom: 20px;
-}
-
-.step h2 {
-    color: #000000;
-    margin-bottom: 10px;
-}
-
-/* adicional Section */
-#adicional {
-    padding: 50px 20px;
-    background-color: white;
-}
-
 /* Footer */
 .footer-content {
     display: flex;
@@ -250,7 +253,7 @@ header {
 .footer-section h2 {
     margin-bottom: 10px;
     font-size: 1.5em;
-    text-align: center; /* Centra el texto horizontalmente */
+    text-align: center;
 }
 
 .footer-section ul {
@@ -261,18 +264,18 @@ header {
 .footer-section ul li {
     margin: 5px 0;
     font-size: 1em;
-    text-align: left; /* Centra el texto horizontalmente */
+    text-align: left;
     margin-left: 35%;
-
 }
 
 .footer-section ul li a {
     color: #fff;
     text-decoration: none;
+    transition: color 0.3s ease;
 }
 
 .footer-section ul li a:hover {
-    text-decoration: underline;
+    color: #d9c2a3;
 }
 
 .footer-bottom {
@@ -285,13 +288,11 @@ header {
 
 /* Responsive */
 @media screen and (max-width: 768px) {
-    /* Sección Nosotros */
     #Nosotros .content {
         flex-direction: column;
         align-items: center;
     }
 
-    /* Footer */
     .footer-content {
         flex-direction: column;
         align-items: center;
@@ -302,7 +303,6 @@ header {
         margin-bottom: 20px;
     }
 
-    /* Menú */
     .menu ul {
         flex-direction: column;
         align-items: center;
@@ -313,7 +313,6 @@ header {
         margin-top: 10px;
     }
 
-    /* Ajuste en el grid de proyectos */
     .grid-container {
         grid-template-columns: 1fr;
     }
