@@ -9,6 +9,12 @@ document.addEventListener("DOMContentLoaded", function () {
             if (targetElement) {
                 targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
             }
+
+            // Cerrar el menú móvil después de hacer clic en un enlace
+            const menu = document.querySelector(".menu");
+            if (menu.classList.contains("active")) {
+                menu.classList.remove("active");
+            }
         });
     });
 
@@ -49,6 +55,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const totalSteps = steps.length;
         let autoScrollInterval;
 
+        // Función para mover el carrusel
         function moveCarousel(direction) {
             if (direction === "left") {
                 currentIndex = (currentIndex - 1 + totalSteps) % totalSteps;
@@ -100,6 +107,52 @@ document.addEventListener("DOMContentLoaded", function () {
             stepWidth = steps[0].offsetWidth + 20; // Recalcula el ancho del paso
             moveCarousel(currentIndex);
         });
+
+        // Funcionalidad de desplazamiento táctil
+        let isDragging = false;
+        let startX, scrollLeft;
+
+        // Eventos para el arrastre con el mouse
+        carouselContainer.addEventListener('mousedown', (e) => {
+            isDragging = true;
+            startX = e.pageX - carouselContainer.offsetLeft;
+            scrollLeft = carouselContainer.scrollLeft;
+        });
+
+        carouselContainer.addEventListener('mousemove', (e) => {
+            if (!isDragging) return;
+            e.preventDefault();
+            const x = e.pageX - carouselContainer.offsetLeft;
+            const walk = (x - startX) * 2; // Ajusta la velocidad del desplazamiento
+            carouselContainer.scrollLeft = scrollLeft - walk;
+        });
+
+        carouselContainer.addEventListener('mouseup', () => {
+            isDragging = false;
+        });
+
+        carouselContainer.addEventListener('mouseleave', () => {
+            isDragging = false;
+        });
+
+        // Eventos táctiles para dispositivos móviles
+        carouselContainer.addEventListener('touchstart', (e) => {
+            isDragging = true;
+            startX = e.touches[0].pageX - carouselContainer.offsetLeft;
+            scrollLeft = carouselContainer.scrollLeft;
+        });
+
+        carouselContainer.addEventListener('touchmove', (e) => {
+            if (!isDragging) return;
+            e.preventDefault();
+            const x = e.touches[0].pageX - carouselContainer.offsetLeft;
+            const walk = (x - startX) * 2; // Ajusta la velocidad del desplazamiento
+            carouselContainer.scrollLeft = scrollLeft - walk;
+        });
+
+        carouselContainer.addEventListener('touchend', () => {
+            isDragging = false;
+        });
     }
 
     // Validación del formulario de contacto
@@ -124,6 +177,16 @@ document.addEventListener("DOMContentLoaded", function () {
     if (mobileMenu && menu) {
         mobileMenu.addEventListener("click", function () {
             menu.classList.toggle("active");
+        });
+
+        // Cerrar el menú al hacer clic en un enlace
+        const menuLinks = menu.querySelectorAll('a');
+        menuLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                if (menu.classList.contains("active")) {
+                    menu.classList.remove("active");
+                }
+            });
         });
     }
 });
