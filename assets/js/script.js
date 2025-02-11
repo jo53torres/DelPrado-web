@@ -42,34 +42,31 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     // Carrusel de servicios
-    const carouselContainer = document.querySelector('.carousel-container');
-    const carouselContent = document.querySelector('.carousel-content');
-    const arrowLeft = document.querySelector('.carousel-arrow-left');
-    const arrowRight = document.querySelector('.carousel-arrow-right');
-    const steps = document.querySelectorAll('.step');
-    const stepWidth = steps[0].offsetWidth + 20; // Ancho de un paso + gap
+    const carouselContent = document.querySelector(".carousel-content");
+    const steps = document.querySelectorAll(".step");
+    const arrowLeft = document.querySelector(".carousel-arrow-left");
+    const arrowRight = document.querySelector(".carousel-arrow-right");
+
     let currentIndex = 0;
-    let autoScrollInterval;
+    const stepWidth = steps[0].offsetWidth + 20; // Ancho de cada paso + gap
+    const totalSteps = steps.length;
 
     // Función para mover el carrusel
-    function moveCarousel(index) {
-        const offset = -index * stepWidth;
+    function moveCarousel(direction) {
+        if (direction === "left") {
+            currentIndex = (currentIndex - 1 + totalSteps) % totalSteps;
+        } else if (direction === "right") {
+            currentIndex = (currentIndex + 1) % totalSteps;
+        }
+
+        // Calcula el desplazamiento
+        const offset = -currentIndex * stepWidth;
         carouselContent.style.transform = `translateX(${offset}px)`;
     }
 
-    // Flecha izquierda
-    arrowLeft.addEventListener('click', () => {
-        currentIndex = (currentIndex > 0) ? currentIndex - 1 : steps.length - 1;
-        moveCarousel(currentIndex);
-        resetAutoScroll(); // Reinicia el intervalo al interactuar manualmente
-    });
-
-    // Flecha derecha
-    arrowRight.addEventListener('click', () => {
-        currentIndex = (currentIndex < steps.length - 1) ? currentIndex + 1 : 0;
-        moveCarousel(currentIndex);
-        resetAutoScroll(); // Reinicia el intervalo al interactuar manualmente
-    });
+    // Eventos para las flechas
+    arrowLeft.addEventListener("click", () => moveCarousel("left"));
+    arrowRight.addEventListener("click", () => moveCarousel("right"));
 
     // Función para el desplazamiento automático
     function startAutoScroll() {
@@ -118,4 +115,13 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         });
     }
+});
+// assets/js/script.js
+document.addEventListener("DOMContentLoaded", function () {
+    const mobileMenu = document.getElementById("mobile-menu");
+    const menu = document.querySelector(".menu");
+
+    mobileMenu.addEventListener("click", function () {
+        menu.classList.toggle("active");
+    });
 });
