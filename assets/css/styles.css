@@ -179,7 +179,7 @@ header {
     width: 100%;
     max-width: 2500px;
     margin: 0 auto;
-    overflow: hidden;
+    overflow: hidden; /* Asegura que el contenido no se desborde */
     padding: 0 50px;
 }
 
@@ -246,6 +246,13 @@ header {
     right: 10px;
 }
 
+/* Ocultar flechas del carrusel en dispositivos móviles */
+@media screen and (max-width: 768px) {
+    .carousel-arrow-left,
+    .carousel-arrow-right {
+        display: none; /* Oculta las flechas */
+    }
+}
 /* Sección Proyectos */
 #proyectos {
     padding: 80px 20px;
