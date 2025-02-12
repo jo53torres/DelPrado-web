@@ -252,6 +252,6 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 });
-
+_paq.push(['trackEvent', 'Categoría', 'Acción', 'Nombre']);
 
 
