@@ -18,6 +18,9 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 
+    
+
+
     // Animaciones cuando los elementos entran en el viewport
     const animatedElements = document.querySelectorAll('.animate');
     if (animatedElements.length > 0) {
@@ -190,3 +193,65 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 });
+
+
+document.addEventListener("DOMContentLoaded", function () {
+    // Obtener elementos del banner y popup
+    const cookieBanner = document.getElementById("cookie-banner");
+    const acceptCookiesButton = document.getElementById("accept-cookies");
+    const rejectCookiesButton = document.getElementById("reject-cookies");
+    const openPolicyLink = document.getElementById("open-cookie-policy");
+    const cookiePolicyPopup = document.getElementById("cookie-policy-popup");
+    const closePopupButton = document.getElementById("close-popup");
+    const cookiePolicyContent = document.getElementById("cookie-policy-content");
+
+    // Verificar si el usuario ya ha dado su consentimiento
+    const cookiesAccepted = localStorage.getItem("cookiesAccepted");
+
+    if (!cookiesAccepted) {
+        cookieBanner.classList.remove("hidden"); // Mostrar el banner si no se ha aceptado
+    }
+
+    // Función para aceptar cookies
+    acceptCookiesButton.addEventListener("click", function () {
+        localStorage.setItem("cookiesAccepted", "true"); // Guardar la preferencia en localStorage
+        cookieBanner.classList.add("hidden"); // Ocultar el banner
+    });
+
+    // Función para rechazar cookies
+    rejectCookiesButton.addEventListener("click", function () {
+        localStorage.setItem("cookiesAccepted", "false"); // Guardar la preferencia en localStorage
+        cookieBanner.classList.add("hidden"); // Ocultar el banner
+    });
+
+    // Abrir el popup de la política de cookies
+    openPolicyLink.addEventListener("click", function (e) {
+        e.preventDefault(); // Prevenir el enlace predeterminado
+        cookiePolicyPopup.classList.add("visible"); // Mostrar el popup
+
+        // Cargar el contenido de la política de cookies desde el archivo
+        fetch('/assets/cookies/cookies.html')
+            .then(response => response.text())
+            .then(data => {
+                cookiePolicyContent.innerHTML = data; // Insertar el contenido en el popup
+            })
+            .catch(error => {
+                cookiePolicyContent.innerHTML = "<p>No se pudo cargar la política de cookies. Por favor, inténtalo más tarde.</p>";
+            });
+    });
+
+    // Cerrar el popup de la política de cookies
+    closePopupButton.addEventListener("click", function () {
+        cookiePolicyPopup.classList.remove("visible"); // Ocultar el popup
+    });
+
+    // Cerrar el popup cuando se haga clic fuera del contenido
+    window.addEventListener("click", function (e) {
+        if (e.target === cookiePolicyPopup) {
+            cookiePolicyPopup.classList.remove("visible"); // Ocultar el popup
+        }
+    });
+});
+
+
+
